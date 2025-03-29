@@ -3,9 +3,7 @@ volumes:
 
 services:
   crawler:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/lee98064/crawler-notify:latest
     volumes:
       - db-data:/app/db
     ports:

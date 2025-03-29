@@ -1,0 +1,24 @@
+name: main-ci
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+    types: [opened, synchronize, reopened, ready_for_review]
+
+# cancel running jobs of the same PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+
+jobs:
+  # test-and-scan:
+  #   secrets: inherit
+  #   uses: ./.github/workflows/test-and-scan.yml
+
+  build-container:
+    secrets: inherit
+    uses: ./.github/workflows/build-container.yml
