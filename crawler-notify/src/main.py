@@ -138,4 +138,4 @@ if __name__ == "__main__":
     scheduler.add_job(run_check_all, trigger='interval', seconds=JOB_EXECUTION_INTERVAL)
     scheduler.start()
     # 建議用 Thread 或 crontab 週期呼叫 /trigger_check
-    app.run(host="127.0.0.1", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=False)
